@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @actor.name %>
+</p>
+
+<p>
+  <b>Dob:</b>
+  <%= @actor.dob %>
+</p>
+
+<p>
+  <b>Roles</b>
+  <% @actor.roles.each do |role| %>
+    <%= role.character_name %>
+  <% end %>
+</p>
+
+<%= link_to 'Edit', edit_actor_path(@actor) %> |
+<%= link_to 'Back', actors_path %>
