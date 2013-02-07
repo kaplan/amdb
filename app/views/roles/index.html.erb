@@ -13,8 +13,8 @@
 <% @roles.each do |role| %>
   <tr>
     <td><%= role.character_name %></td>
-    <td><%= role.movie_id %></td>
-    <td><%= role.actor_id %></td>
+    <td><%= link_to role.movie.title, movie_url(role.movie.id) %></td>
+    <td><%= link_to role.actor.name, actor_url(role.actor.id) %></td>
     <td><%= link_to 'Show', role %></td>
     <td><%= link_to 'Edit', edit_role_path(role) %></td>
     <td><%= link_to 'Destroy', role, method: :delete, data: { confirm: 'Are you sure?' } %></td>

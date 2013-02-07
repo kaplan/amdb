@@ -6,15 +6,20 @@
 </p>
 
 <p>
-  <b>Movie:</b>
-  <%= @role.movie_id %>
+  <b>Actor:</b>
+  <%= @role.actor.name %>
 </p>
 
 <p>
-  <b>Actor:</b>
-  <%= @role.actor_id %>
+  <b>Movie:</b>
+  <%= @role.movie.title %>
 </p>
 
+<p>
+  <b>Director:</b>
+  <%= @role.movie.director.name %>
+  <%# role.movie.director.name %>
+</p>
 
 <%= link_to 'Edit', edit_role_path(@role) %> |
 <%= link_to 'Back', roles_path %>

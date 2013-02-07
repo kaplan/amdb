@@ -12,9 +12,17 @@
 
 <p>
   <b>Director:</b>
-  <%# @movie.director_id %>
   <%= @movie.director.name %>
 </p>
+
+
+<b>Cast:</b>
+  <ul>
+  <% @movie.roles.each do | role | %>
+    <li><%= role.character_name %></li>
+  <% end %>
+</ul>
+
 
 
 <%= link_to 'Edit', edit_movie_path(@movie) %> |
