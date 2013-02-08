@@ -4,15 +4,15 @@ Amdb::Application.routes.draw do
 
   resources :roles
 
-
   resources :actors
-
 
   resources :movies
 
-
   resources :directors
 
+  resources :users
+
+  resources :votes
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -13,12 +13,11 @@ class DirectorsController < ApplicationController
 
   # GET /directors/1
   # GET /directors/1.json
-
-  before_filter :use_slug
-  protected
-  def use_slug
-    @director = Director.where(slug: params[:id]).first
-  end
+  # before_filter :use_slug
+  # protected
+  # def use_slug
+  #   @director = Director.where(slug: params[:id]).first
+  # end
 
   def show
     @director = Director.find(params[:id])
