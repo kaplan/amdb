@@ -1,5 +1,33 @@
 <p id="notice"><%= notice %></p>
 
+<h3>Vote for this movie!</h3>
+<%# you could use: @movie.votes.build instead of @votes
+    and that will get you the movie_id from this object %>
+<%= form_for(@vote) do |f| %>
+  <% if @vote.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@vote.errors.count, "error") %> prohibited this vote from being saved:</h2>
+
+      <ul>
+      <% @vote.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.hidden_field :movie_id, :value => @movie.id %>
+
+  <div class="field">
+    <%= f.collection_select :user_id, User.all, :id, :username %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+
 <p>
   <b>Title:</b>
   <%= @movie.title %>

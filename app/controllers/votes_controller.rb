@@ -4,6 +4,7 @@ class VotesController < ApplicationController
   # GET /votes.json
   def index
     @votes = Vote.all
+    # @votes = Vote.order('id asc').limit(50)
 
     respond_to do |format|
       format.html # index.html.erb

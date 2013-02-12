@@ -1,10 +1,19 @@
 <h1>Listing movies</h1>
 
+<%# @movie_votes.inspect %>
+<%# @movie_votes %>
+<%# @movie_names.inspect %>
+<%# @movie_vote_tally %>
+<%# @movies_to_sort%>
+<%# @movies.inspect %>
+<%# @sorted %>
+
 <table>
   <tr>
+    <th>Votes</th>
     <th>Title</th>
-    <th>Year</th>
     <th>Director</th>
+    <th>Year</th>
     <th></th>
     <th></th>
     <th></th>
@@ -12,12 +21,21 @@
 
 <% @movies.each do |movie| %>
   <tr>
+    <td><%= movie.votes.count %></td>
     <td><%= movie.title %></td>
+    <td><%= link_to movie.director.name, director_url(movie.director.id) %></td>
     <td><%= movie.year %></td>
-    <td><%= link_to movie.director.name, director_url(movie.director.slug) %></td>
+
+    <td><%= form_for(@vote) do |f| %>
+      <%# f.collection_select :user_id, User.all, :id, :username %>
+      <%= f.collection_select :user_id, User.order('username asc'), :id, :username %>
+      <%= f.hidden_field :movie_id, :value => movie.id %>
+      <%= f.submit %>
+      <% end %>
+    </td>
     <td><%= link_to 'Show', movie %></td>
-    <td><%= link_to 'Edit', edit_movie_path(movie) %></td>
-    <td><%= link_to 'Destroy', movie, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%# link_to 'Edit', edit_movie_path(movie) %></td>
+    <td><%# link_to 'Destroy', movie, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>

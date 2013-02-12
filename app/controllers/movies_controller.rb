@@ -2,7 +2,39 @@ class MoviesController < ApplicationController
   # GET /movies
   # GET /movies.json
   def index
-    @movies = Movie.all
+    # loop through each movie and get it's vote count
+    # push those into an array and sort it?
+
+    @movies = Movie.order('title asc').limit(20)
+    @vote = Vote.new
+    # @sorted = (@movies + @votes)
+
+    # @sorted = @movies.sort_by &:created_at
+
+    # @movies_to_sort = Array.new
+
+    # @movies.each do |movie|
+    #   @movies_to_sort << movie
+    #   @votes = movie.votes.where(:movie_id => movie.id).count
+    # end
+
+
+    # @movie_votes = Array.new
+    # @movie_names = Array.new
+    # @movie_vote_tally = Hash.new
+
+    # loop through Vote and get look at the id and get it's vote count
+    # @votes = Vote.order('id asc').limit(50)
+
+    # @movies.each do |movie|
+      # movie_hash = {movie => movie.votes.count }
+      # @movies_to_sort << movie_hash
+      # @movie_vote_tally[movie.title] = movie.votes.count
+      # @movie_votes << movie.votes.count
+      # @movie_names << movie.title
+    # end
+    # return @movies_to_sort
+
 
     respond_to do |format|
       format.html # index.html.erb
@@ -14,6 +46,7 @@ class MoviesController < ApplicationController
   # GET /movies/1.json
   def show
     @movie = Movie.find(params[:id])
+    @vote = Vote.new
 
     respond_to do |format|
       format.html # show.html.erb
