@@ -2,21 +2,25 @@ class MoviesController < ApplicationController
   # GET /movies
   # GET /movies.json
   def index
-    # loop through each movie and get it's vote count
-    # push those into an array and sort it?
 
-    @movies = Movie.order('title asc').limit(20)
+    @movies = Movie.all.sort_by { |movie| movie.votes.count }.reverse
     @vote = Vote.new
-    # @sorted = (@movies + @votes)
 
-    # @sorted = @movies.sort_by &:created_at
 
-    # @movies_to_sort = Array.new
 
-    # @movies.each do |movie|
-    #   @movies_to_sort << movie
-    #   @votes = movie.votes.where(:movie_id => movie.id).count
+
+    # @movies_collection = Movie.order('title asc').limit(20)
+    # @movies = Array.new
+    # @movie_votes = Array.new
+
+    # @movies_collection.each do |movie|
+    #   votes = movie.votes.where(:movie_id => movie.id)
+    #   # movie << movie_votes
+    #   @movies << movie
+    #   @movie_votes << votes
     # end
+    # return @movies
+
 
 
     # @movie_votes = Array.new
